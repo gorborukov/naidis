@@ -1,0 +1,46 @@
+<head>
+  <title>naidis</title>
+</head>
+
+<body>
+  <div class="container">
+	  <form class="new-post">
+	    <input type="text" name="text" placeholder="Type to add new post" />
+	  </form>
+	  <div>
+
+	  <!-- Nav tabs -->
+		  <ul class="nav nav-tabs" role="tablist">
+		    <li role="presentation" class="active"><a href="#nearby" aria-controls="nearby" role="tab" data-toggle="tab">Рядом</a></li>
+		    <li role="presentation"><a href="#all" aria-controls="all" role="tab" data-toggle="tab">Все</a></li>
+		  </ul>
+
+		  <!-- Tab panes -->
+		  <div class="tab-content">
+		    <div role="tabpanel" class="tab-pane active" id="nearby">
+		    	<ul>
+				    {{#each nearbyPosts}}
+				      {{> post}}
+				    {{/each}}
+				</ul>
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="all">
+		    	<ul>
+				    {{#each allPosts}}
+				      {{> post}}
+				    {{/each}}
+				</ul>
+		    </div>
+		  </div>
+
+	  </div>
+  </div>
+  
+</body>
+
+<template name="post">
+  <li>{{text}}</li>
+  <small>{{createdAt}}</small>
+  <small>{{location.lat}}</small>
+</template>
+
