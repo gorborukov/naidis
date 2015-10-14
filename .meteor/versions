@@ -47,6 +47,7 @@ mrt:modernizr-meteor@2.6.2
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
+outatime:geolib@2.0.15
 promise@0.5.0
 random@1.0.4
 reactive-dict@1.1.2

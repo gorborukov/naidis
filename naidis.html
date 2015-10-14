@@ -41,6 +41,5 @@
 <template name="post">
   <li>{{text}}</li>
   <small>{{createdAt}}</small>
-  <small>{{location.lat}}</small>
+  <small>{{location.coordinates.lat}}, {{location.coordinates.lon}}</small>
 </template>
-
