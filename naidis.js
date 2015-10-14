@@ -10,7 +10,7 @@ if (Meteor.isClient) {
         lat:position.coords.latitude,
         lon:position.coords.longitude
       });
-      console.log(Session.get('location'));
+      console.log(Session.get('location').lat, Session.get('location').lon);
     },function(err) {
       console.log(err);
     },options);
@@ -26,7 +26,7 @@ if (Meteor.isClient) {
         location: {
           $near: {
             $geometry: {
-              //type: "Point",
+              type: "Point",
               coordinates: Session.get('location')
             },
             $maxDistance: 20000
@@ -51,7 +51,7 @@ if (Meteor.isClient) {
         createdAt: new Date(),
         location: {
           type: "Point",
-          coordinates: Session.get('location')
+          coordinates: [Session.get('location').lat, Session.get('location').lon]
         }
       });
       event.target.text.value = "";
