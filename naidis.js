@@ -26,7 +26,7 @@ if (Meteor.isClient) {
         location: {
           $near: {
             $geometry: {
-              type: "Point",
+              //type: "Point",
               coordinates: Session.get('location')
             },
             $maxDistance: 20000
@@ -69,6 +69,7 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+  Posts._ensureIndex({location: "2dsphere"});
   Meteor.startup(function () {
 
   });
