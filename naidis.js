@@ -7,16 +7,16 @@ if (Meteor.isClient) {
     var options = {timeout:3000};
     navigator.geolocation.watchPosition(function(position) {
       Session.set('location',{
-        lat:position.coords.latitude,
-        lon:position.coords.longitude
+        lon:position.coords.longitude,
+        lat:position.coords.latitude
       });
-      console.log(Session.get('location').lat, Session.get('location').lon);
+      console.log(Session.get('location').lon, Session.get('location').lat);
     },function(err) {
       console.log(err);
     },options);
   };
 
-  Session.setDefault('location', {lat:0,lon:0});
+  Session.setDefault('location', {lon:0,lat:0});
   //geolib get distance
 
   //web browser client
@@ -27,7 +27,7 @@ if (Meteor.isClient) {
           $near: {
             $geometry: {
               type: "Point",
-              coordinates: Session.get('location')
+              coordinates: [Session.get('location').lon, Session.get('location').lat]
             },
             $maxDistance: 20000
           }
@@ -51,7 +51,7 @@ if (Meteor.isClient) {
         createdAt: new Date(),
         location: {
           type: "Point",
-          coordinates: [Session.get('location').lat, Session.get('location').lon]
+          coordinates: [Session.get('location').lon, Session.get('location').lat]
         }
       });
       event.target.text.value = "";
