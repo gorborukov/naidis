@@ -17,7 +17,6 @@ if (Meteor.isClient) {
   };
 
   Session.setDefault('location', {lon:0,lat:0});
-  //geolib get distance
 
   //web browser client
   Template.body.helpers({
@@ -32,15 +31,21 @@ if (Meteor.isClient) {
             $maxDistance: 20000
           }
         }
-      });
+      },{sort: {createdAt: -1}});
     },
     allPosts: function () {
       return Posts.find({},{sort: {createdAt: -1}});
-    },
-    globalLocation: function() {
-     return Session.get('location'); 
     }
   });
+  
+  Template.post.helpers({
+    getDistance: function(coordinates) {
+     return geolib.getDistance({latitude: coordinates[1], longitude: coordinates[0]},
+      {latitude: Session.get('location').lat,longitude: Session.get('location').lon}
+     ); 
+    }
+  });
+
 
   Template.body.events({
     "submit .new-post": function (event) {
