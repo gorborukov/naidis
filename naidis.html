@@ -1,38 +1,54 @@
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>naidis</title>
 </head>
 
 <body>
-	<div class="container">
+
+	<div class="ui inverted fixed menu">
+		  <div class="item">
+			  <i class="sidebar big icon"></i>
+		  </div>
+		  <div class="right menu">
+		    <div class="item">
+		      <i class="write big icon"></i>
+		    </div>
+		  </div>
+	</div>
+	<div class="ui container main-content">
+		<div class="ui form create">
 	    <form class="new-post">
-	      <input type="text" name="text" placeholder="Type to add new post" />
+	      <div class="field">
+	      	<textarea rows="2" type="text" name="text" placeholder="Type to add new post"></textarea>
+	      </div>
 	    </form>
+	    </div>
 	    <div class="ui pointing secondary menu">
-		  <a class="active item" data-tab="first">First</a>
-		  <a class="item" data-tab="second">Second</a>
+		  <a class="active item" data-tab="first">Рядом</a>
+		  <a class="item" data-tab="second">Все новые</a>
 		</div>
-		<div class="ui bottom attached tab segment active" data-tab="first">
+		<div class="ui tab active" data-tab="first">
 			{{#each nearbyPosts}}
 				{{> post}}
 			{{/each}}
 		</div>
-		<div class="ui bottom attached tab segment" data-tab="second">
+		<div class="ui tab" data-tab="second">
 			{{#each allPosts}}
 				{{> post}}
 			{{/each}}
 		</div>
 		<script>
 			$('.menu .item').tab();
+			$('.write').click(function() {
+				$(".create").toggle();
+			});
 		</script>
-
 	</div>
 </body>
 
 <template name="post">
 	<div class="ui segment">
-	  {{text}}
-	  <small>{{createdAt}}</small><br>
+	  <p>{{text}} <strong>{{createdAt}}</strong></p>
 	  <small>{{getDistance location.coordinates}} м. от вас</small>
   	</div>
 </template>

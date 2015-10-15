@@ -1,1 +1,14 @@
-/* CSS declarations go here */
+.main-content {
+	margin-top: 84px;
+}
+.ui.menu {
+	border-radius: 0px;
+}
+
+.ui.menu .item > i.icon {
+	margin-right: 0px;
+}
+
+.create {
+	display: none;
+}
