@@ -18,9 +18,12 @@
 	<div class="ui container main-content">
 		<div class="ui form create">
 	    <form class="new-post">
-	      <div class="field">
-	      	<textarea rows="2" type="text" name="text" placeholder="Type to add new post"></textarea>
-	      </div>
+			<div class="field">
+				<textarea rows="2" type="text" name="text" placeholder="Type to add new post"></textarea>
+			</div>
+			<button class="ui primary button">
+			  Отправить
+			</button>
 	    </form>
 	    </div>
 	    <div class="ui pointing secondary menu">
@@ -47,8 +50,21 @@
 </body>
 
 <template name="post">
-	<div class="ui segment">
-	  <p>{{text}} <strong>{{createdAt}}</strong></p>
-	  <small>{{getDistance location.coordinates}} м. от вас</small>
+<div class="ui raised segment">
+<div  class="ui feed">
+	<div class="event">
+	  <div class="content">
+	  	<div class="summary">
+		  <a>Аноним </a>написал(-а) <span data-livestamp="{{getDate createdAt}}"></span>
+		</div>
+		<div class="extra text">
+			<p>{{text}}</p>
+		</div>
+		<div class="meta">
+		  <span class="like"><i class="comment icon"></i>0 Комметнариев </span><span class="like"><i class="location arrow icon"></i> {{getDistance location.coordinates}} м. от вас</span>
+		</div>
+	  </div>
   	</div>
+ </div>
+ </div>
 </template>

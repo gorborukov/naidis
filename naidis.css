@@ -1,5 +1,5 @@
 .main-content {
-	margin-top: 84px;
+	margin-top: 54px;
 }
 .ui.menu {
 	border-radius: 0px;
@@ -11,4 +11,8 @@
 
 .create {
 	display: none;
+}
+
+.create .field {
+	margin-top: 68px !important; /* fix in near future */
 }

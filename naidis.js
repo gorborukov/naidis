@@ -43,6 +43,9 @@ if (Meteor.isClient) {
      return geolib.getDistance({latitude: coordinates[1], longitude: coordinates[0]},
       {latitude: Session.get('location').lat,longitude: Session.get('location').lon}
      ); 
+    },
+    getDate: function(createdAt) {
+      return createdAt.toISOString();
     }
   });
 

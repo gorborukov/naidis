@@ -22,3 +22,5 @@ mdg:geolocation
 mrt:modernizr-meteor
 outatime:geolib
 semantic:ui-css
+copleykj:livestamp
+rzymek:moment-locale-ru
